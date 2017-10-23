@@ -1,0 +1,8 @@
+version: '3'
+services:
+  elk:
+    image: sebp/elk:563
+    volumes:
+      - ./input:/files
+      - ./csv-input.conf:/etc/logstash/conf.d/file-input.conf
+      - ./data:/var/lib/elasticsearch

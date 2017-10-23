@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "analysis": {
+      "analyzer": {
+        "lowercase_keyword_analyzer": {
+          "type": "custom",
+          "tokenizer": "keyword",
+          "filter": [ "lowercase" ]
+        }
+      }
+    },
+    "similarity": {
+      "no_termfrequencies": {
+        "type": "BM25",
+        "k1": 0,
+        "b": 0
+      }
+    }
+  },
+  "mappings": {
+    "output": {
+      "dynamic": "strict",
+      "properties": {
+        "hashKey": {
+          "type": "text",
+          "analyzer": "lowercase_keyword_analyzer"
+        },
+        "uberIds": {
+          "type": "integer"
+        },
+        "canonicalUrl": {
+          "type": "text",
+          "analyzer": "lowercase_keyword_analyzer"
+        },
+        "plainUrl": {
+          "type": "text",
+          "analyzer": "lowercase_keyword_analyzer"
+        },
+        "volume": {
+          "type": "integer"
+        },
+        "score": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
